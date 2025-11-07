@@ -1,33 +1,36 @@
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import './App.css'
+import Ingredients from './components/Ingredients.jsx'
+import Recipes from './components/Recipes.jsx'
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [ingredients, setIngredients] = useState([])
+
+  const handleIngredientsUpdate = (updatedIngredients) => {
+    setIngredients(updatedIngredients)
+  }
 
   return (
     <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+      <header className="topbar">
+        <h1 className="title">빵 단가 계산기</h1>
+        <p className="subtitle">재료 등록 → 레시피 등록 → 개당 단가 계산</p>
+      </header>
+
+      <main className="container">
+        <section className="grid">
+          <Ingredients onUpdate={handleIngredientsUpdate} />
+          <Recipes ingredients={ingredients} />
+        </section>
+
+        <section className="card info">
+          <h3>유용한 팁</h3>
+          <ul>
+            <li>재료는 g 단위로 입력하세요.</li>
+            <li>가격은 해당 구매량 전체의 가격(원)으로 입력하세요.</li>
+          </ul>
+        </section>
+      </main>
     </>
   )
 }
