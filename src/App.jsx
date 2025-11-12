@@ -23,13 +23,13 @@ function App() {
           <Recipes ingredients={ingredients} />
         </section>
 
-        <section className="card info">
+        {/* <section className="card info">
           <h3>유용한 팁</h3>
           <ul>
             <li>재료는 g 단위로 입력하세요.</li>
             <li>가격은 해당 구매량 전체의 가격(원)으로 입력하세요.</li>
           </ul>
-        </section>
+        </section> */}
       </main>
     </>
   )

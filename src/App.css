@@ -64,7 +64,7 @@ body {
 .grid {
   display: grid;
   width: 80%;
-  grid-template-columns: 500px 1fr;  /* Increased from 400px to 500px */
+  grid-template-columns: 600px 1fr;  /* Increased from 500px to 600px */
   gap: 2rem;
   margin-bottom: 2rem;
 }
@@ -80,11 +80,17 @@ body {
   background: var(--card);
   border-radius: var(--radius);
   box-shadow: var(--shadow);
-  padding: 1.5rem;
+  /* padding: 1.5rem; */
   /* background: var(--card);
   border-radius: var(--radius);
   box-shadow: var(--shadow);
   height: fit-content; */
+}
+
+.recipe-form {
+  padding: 1.5rem;
+  border-bottom: 1px solid var(--border);
+  background: #f8fafc;
 }
 
 .panel-header {
@@ -237,7 +243,7 @@ body {
 }
 
 .ingredient-item strong {
-  min-width: 100px;
+  min-width: 150px;  /* Increased from 100px to 150px */
 }
 
 .ingredient-item .muted {
