@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef } from 'react'
+import { recipesData } from '../data/recipesData.js' 
 
 const REC_KEY = 'upc_recipes_v1'
 
@@ -33,6 +34,8 @@ export default function Recipes({ ingredients }) {
   useEffect(() => {
     const r = localStorage.getItem(REC_KEY)
     if (r) setRecipes(JSON.parse(r))
+
+    setRecipes(recipesData)
   }, [])
 
   useEffect(() => localStorage.setItem(REC_KEY, JSON.stringify(recipes)), [recipes])

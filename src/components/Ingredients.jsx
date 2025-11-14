@@ -19,7 +19,7 @@ export default function Ingredients({ onUpdate }) {
     });
 
     useEffect(() => {
-        setItems(ingredientsData.ingredients)
+        setItems(ingredientsData)
     }, [])
 
     useEffect(() => {

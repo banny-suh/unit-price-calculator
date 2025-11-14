@@ -1,19 +1,13 @@
-export const recipesData = {
-    "recipes": [
-        {
-            "id": "1",
-            "name": "사워도우",
-            "count": 1,
-            "items": [
-                {
-                    "ingredientId": "1",
-                    "gramsUsed": 500
-                },
-                {
-                    "ingredientId": "2",
-                    "gramsUsed": 10
-                }
-            ]
-        }
-    ]
-}
+export const recipesData = [
+    {
+        id: '1',
+        name: '사워도우',
+        count: 2,
+        items: [
+            { ingredientId: 'levain001', gramsUsed: 200 },
+            { ingredientId: 'flour003', gramsUsed: 600 },
+            { ingredientId: 'flour001', gramsUsed: 300 },
+            { ingredientId: 'flour004', gramsUsed: 100 },
+        ]
+    }
+]
