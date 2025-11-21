@@ -1,27 +1,80 @@
 :root {
-  --width: 1400px;
+  --menu-width: 250px;
   --bg: #f8fafc;
   --card: #ffffff;
   --muted: #64748b;
   --primary: #4f46e5;
   --primary-hover: #4338ca;
   --accent: #2563eb;
-  --accent-600: #4338ca;
   --border: #e2e8f0;
   --radius: 12px;
   --shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+  --transition-speed: 0.3s;
 }
 
-* { box-sizing: border-box }
+* { box-sizing: border-box; }
 
 body {
   margin: 0;
   background: var(--bg);
   color: #0f172a;
-  line-height: 1.5;
   font-family: Inter, -apple-system, sans-serif;
+  overflow-x: hidden;
 }
 
+.app-grid {
+  display: flex;
+  min-height: 100vh;
+}
+
+.menu-container {
+  position: relative;
+  width: var(--menu-width);
+  flex-shrink: 0;
+  transition: width var(--transition-speed) ease;
+}
+
+.app-grid.menu-closed .menu-container {
+  width: 0;
+}
+
+.app-grid.peeking .menu-container {
+  width: var(--menu-width);
+}
+
+.menu-peek-area {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 20px;
+  height: 100vh;
+  z-index: 100;
+}
+
+main {
+  padding: 2rem;
+  flex-grow: 1;
+}
+
+.unit-price-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+}
+
+@media (max-width: 768px) {
+  .app-grid {
+    flex-direction: column;
+  }
+  .menu-container {
+    display: none;
+  }
+  .unit-price-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Other styles from your original file */
 .container {
   width: 100%;
   max-width: var(--container-width);
@@ -59,22 +112,6 @@ body {
   font-size: clamp(0.875rem, 2vw, 1rem);
   color: var(--muted);
   margin: 0;
-}
-
-.grid {
-  display: grid;
-  width: 100%;
-  grid-template-columns: 250px 1fr;
-  gap: 2rem;
-  min-height: 100vh;
-}
-
-.unit-price-grid {
-  display: grid;
-  width: 100%;
-  grid-template-columns: 1fr 1fr;
-  gap: 2rem;
-  margin-bottom: 2rem;
 }
 
 .side-panel {
@@ -558,34 +595,4 @@ h3, h4 {
   background: #f1f5f9;
   border-radius: 4px;
   color: #1e293b;
-}
-
-@media (max-width: 768px) {
-  :root {
-    --padding-x: 1rem;
-    --gap: 1rem;
-  }
-  
-  .card,
-  .info {
-    max-width: 100%;
-  }
-  
-  .row {
-    flex-direction: column;
-  }
-
-  .row > * {
-    flex: 1 1 auto;
-  }
-
-  .list-item {
-    flex-direction: column;
-.
-    align-items: flex-start;
-  }
-  
-  .btn {
-    width: 100%;
-  }
 }
