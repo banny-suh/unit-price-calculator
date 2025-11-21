@@ -43,7 +43,9 @@ export default function Recipes({ ingredients }) {
   const addIngToRecipe = () => {
     if (!selectedIng || !gramsUsed) return
     setCurrentItems(s => [...s, { ingredientId: selectedIng, gramsUsed: Number(gramsUsed) }])
-    setSelectedIng(''); setGramsUsed('')
+    setSelectedIng(''); 
+    setGramsUsed('');
+    setSearchIngredient('');
   }
 
   const validateForm = () => {
