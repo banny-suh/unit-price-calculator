@@ -5,8 +5,20 @@
 }
 
 .side-panel, .main-panel {
-  min-width: 585px;
-  overflow-x: auto;
+  min-width: 585px; /* Maintain a minimum width */
+  overflow-x: hidden; /* Hide horizontal overflow within the panel */
+}
+
+.recipe-item {
+  width: 100%; /* Ensure it takes full width of its parent */
+  box-sizing: border-box; /* Include padding and border in the element's total width and height */
+}
+
+.recipe-ingredients {
+  margin-top: 1rem;
+  padding-top: 0.5rem;
+  border-top: 1px dashed var(--border);
+  overflow: hidden; /* Hide overflow when collapsed */
 }
 
 .container {

@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react'
 import { ingredientsData } from '../../../data/ingredientsData.js'
 
 const STORAGE_KEY = 'upc_ingredients_v1'
-const ITEMS_PER_PAGE = 10
+const ITEMS_PER_PAGE = 5
 
 export default function Ingredients({ onUpdate }) {
     const [items, setItems] = useState([])
@@ -149,7 +149,7 @@ export default function Ingredients({ onUpdate }) {
             )}
 
             <div className="ingredients-list">
-                {filteredItems.map(item => (
+                {filteredItems.slice(0, visibleItems).map(item => (
                     <div key={item.id} className="ingredient-item">
                         <div className="content">
                             <strong>{item.name}</strong>
@@ -166,6 +166,11 @@ export default function Ingredients({ onUpdate }) {
                     </div>
                 ))}
             </div>
+            {visibleItems < filteredItems.length && (
+                <div className="show-more">
+                    <button className="btn" onClick={showMore}>더보기</button>
+                </div>
+            )}
         </div>
     )
 }

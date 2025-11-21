@@ -1,5 +1,7 @@
 :root {
   --menu-width: 250px;
+  --menu-toggle-size: 24px; /* Size of the SVG icon */
+  --menu-toggle-padding: 1.5rem; /* Padding from top/left */
   --bg: #f8fafc;
   --card: #ffffff;
   --muted: #64748b;

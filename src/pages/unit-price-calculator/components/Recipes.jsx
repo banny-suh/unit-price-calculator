@@ -17,6 +17,7 @@ function calcUnitCost(recipe, ingredients) {
 
 export default function Recipes({ ingredients }) {
   const [recipes, setRecipes] = useState([])
+  const [openIngredients, setOpenIngredients] = useState({}); // State to manage toggle for each recipe
 
   const [name, setName] = useState('')
   const [count, setCount] = useState(1)
@@ -99,6 +100,13 @@ export default function Recipes({ ingredients }) {
     document.addEventListener('mousedown', handleClickOutside)
     return () => document.removeEventListener('mousedown', handleClickOutside)
   }, [])
+
+  const toggleIngredientsVisibility = (recipeId) => {
+    setOpenIngredients(prev => ({
+      ...prev,
+      [recipeId]: !prev[recipeId]
+    }));
+  };
 
   return (
     <div className="main-panel">
@@ -189,23 +197,42 @@ export default function Recipes({ ingredients }) {
         <ul className="list">
           {recipes.map(r => {
             const c = calcUnitCost(r, ingredients)
+            const isIngredientsVisible = openIngredients[r.id];
             return (
               <li key={r.id} className="list-item recipe-item">
                 <div>
                   <strong>{r.name}</strong>
                   <div className="muted">총비용: {c.total} 원 · 개당: {c.perItem} 원 · ({r.count}개)</div>
                   <div className="recipe-ingredients">
-                    <h5>사용 재료</h5>
-                    <ul className="ingredients-used">
-                      {r.items.map((item, idx) => {
-                        const ing = ingredients.find(i => i.id === item.ingredientId)
-                        return ing ? (
-                          <li key={idx}>
-                            {ing.name} - {item.gramsUsed}g
-                          </li>
-                        ) : null
-                      })}
-                    </ul>
+                    <h5 onClick={() => toggleIngredientsVisibility(r.id)} style={{ cursor: 'pointer' }}>
+                      사용 재료 
+                      <svg 
+                        xmlns="http://www.w3.org/2000/svg" 
+                        width="16" 
+                        height="16" 
+                        viewBox="0 0 24 24" 
+                        fill="none" 
+                        stroke="currentColor" 
+                        strokeWidth="2" 
+                        strokeLinecap="round" 
+                        strokeLinejoin="round"
+                        style={{ marginLeft: '5px', verticalAlign: 'middle', transform: isIngredientsVisible ? 'rotate(180deg)' : 'rotate(0deg)', transition: 'transform 0.2s' }}
+                      >
+                        <polyline points="6 9 12 15 18 9"></polyline>
+                      </svg>
+                    </h5>
+                    {isIngredientsVisible && (
+                      <ul className="ingredients-used">
+                        {r.items.map((item, idx) => {
+                          const ing = ingredients.find(i => i.id === item.ingredientId)
+                          return ing ? (
+                            <li key={idx}>
+                              {ing.name} - {item.gramsUsed}g
+                            </li>
+                          ) : null
+                        })}
+                      </ul>
+                    )}
                   </div>
                 </div>
                 <div className="actions">
