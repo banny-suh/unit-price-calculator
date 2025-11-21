@@ -32,13 +32,22 @@ main {
   transition: left var(--transition-speed) ease;
 }
 
+.menu-toggle-closed .menu-toggle-icon {
+  display: inline-block;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.menu-toggle-closed:hover .menu-toggle-icon {
+  transform: scale(1.1);
+}
+
 .menu-toggle-closed svg {
   color: var(--muted);
   transition: color 0.2s;
 }
 
 .menu-toggle-closed:hover svg {
-  color: var(--primary);
+  color: var(--accent);
 }
 
 @media (max-width: 768px) {

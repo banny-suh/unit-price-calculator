@@ -123,7 +123,7 @@ export default function Recipes({ ingredients }) {
             value={name} 
             onChange={e => setName(e.target.value)} 
           />
-          {errors.name && <span className="error-message">레시피 이름을 입력해주세요</span>}
+{/*           {errors.name && <span className="error-message">레시피 이름을 입력해주세요</span>} */}
         </div>
 
         <div className="form-group">

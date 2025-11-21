@@ -13,10 +13,6 @@
   width: 0;
 }
 
-.app-grid.peeking .menu {
-  width: var(--menu-width);
-}
-
 .menu ul {
   list-style: none;
   padding: 20px;
@@ -60,11 +56,26 @@
   padding: 0;
 }
 
+.menu-toggle-open .menu-toggle-icon {
+  display: inline-block;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.menu-toggle-open:hover .menu-toggle-icon {
+  transform: scale(1.1);
+}
+
+.menu-toggle-open.is-closing .menu-toggle-icon {
+  opacity: 0;
+  transform: scale(0.8);
+  transition: opacity 0.1s ease, transform 0.1s ease; /* Faster transition for closing */
+}
+
 .menu-toggle-open svg {
   color: var(--muted);
   transition: color 0.2s;
 }
 
 .menu-toggle-open:hover svg {
-  color: var(--primary);
+  color: var(--accent);
 }
