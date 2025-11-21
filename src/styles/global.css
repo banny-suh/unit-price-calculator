@@ -1,0 +1,23 @@
+:root {
+  --menu-width: 250px;
+  --bg: #f8fafc;
+  --card: #ffffff;
+  --muted: #64748b;
+  --primary: #4f46e5;
+  --primary-hover: #4338ca;
+  --accent: #2563eb;
+  --border: #e2e8f0;
+  --radius: 12px;
+  --shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+  --transition-speed: 0.3s;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: #0f172a;
+  font-family: Inter, -apple-system, sans-serif;
+  overflow-x: hidden;
+}

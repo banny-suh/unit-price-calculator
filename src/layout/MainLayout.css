@@ -1,0 +1,75 @@
+.app-grid {
+  display: flex;
+  min-height: 100vh;
+}
+
+.menu-container {
+  position: relative;
+  width: var(--menu-width);
+  flex-shrink: 0;
+  transition: width var(--transition-speed) ease;
+}
+
+.app-grid.menu-closed .menu-container {
+  width: 0;
+}
+
+.app-grid.peeking .menu-container {
+  width: var(--menu-width);
+}
+
+.menu-peek-area {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 20px;
+  height: 100vh;
+  z-index: 100;
+}
+
+main {
+  padding: 2rem;
+  flex-grow: 1;
+}
+
+.menu-toggle {
+  position: absolute;
+  top: 1.5rem;
+  left: 1.5rem;
+  z-index: 101;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  transition: left var(--transition-speed) ease;
+}
+
+.menu-toggle.is-open,
+.app-grid.peeking .menu-toggle {
+  left: calc(var(--menu-width) - 40px);
+}
+
+.menu-toggle svg {
+  color: var(--muted);
+  transition: color 0.2s;
+}
+
+.menu-toggle:hover svg {
+  color: var(--primary);
+}
+
+.menu-toggle.is-open svg {
+  color: var(--accent);
+}
+
+@media (max-width: 768px) {
+  .app-grid {
+    flex-direction: column;
+  }
+  .menu-container {
+    display: none;
+  }
+  .menu-toggle {
+    display: none;
+  }
+}

@@ -48,27 +48,3 @@
   background-color: var(--primary);
   color: white;
 }
-
-.menu-toggle {
-  position: absolute;
-  top: 1.5rem;
-  right: 1rem;
-  z-index: 101;
-  background: transparent;
-  border: none;
-  cursor: pointer;
-  padding: 0;
-}
-
-.menu-toggle svg {
-  color: var(--muted);
-  transition: color 0.2s;
-}
-
-.menu-toggle:hover svg {
-  color: var(--primary);
-}
-
-.menu-toggle.is-open svg {
-  color: var(--accent);
-}

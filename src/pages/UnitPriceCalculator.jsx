@@ -1,14 +1,14 @@
-import { useState } from 'react'
-import '../App.css'
-import Ingredients from '../components/Ingredients.jsx'
-import Recipes from '../components/Recipes.jsx'
+import { useState } from 'react';
+import Ingredients from './unit-price-calculator/components/Ingredients.jsx';
+import Recipes from './unit-price-calculator/components/Recipes.jsx';
+import './UnitPriceCalculator.css';
 
 function UnitPriceCalculator() {
-  const [ingredients, setIngredients] = useState([])
+  const [ingredients, setIngredients] = useState([]);
 
   const handleIngredientsUpdate = (updatedIngredients) => {
-    setIngredients(updatedIngredients)
-  }
+    setIngredients(updatedIngredients);
+  };
 
   return (
     <>
@@ -24,7 +24,7 @@ function UnitPriceCalculator() {
         </section>
       </main>
     </>
-  )
+  );
 }
 
 export default UnitPriceCalculator;
