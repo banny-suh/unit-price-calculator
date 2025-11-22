@@ -1,7 +1,7 @@
 import React from 'react';
-import '../pages/unit-price-calculator/UnitPriceCalculator.css'; // Import the CSS for grid layout
+import './BakingScheduler.css';
 
-const Scheduler = () => {
+const BakingScheduler = () => {
   return (
     <>
       <header className="topbar">
@@ -27,10 +27,10 @@ const Scheduler = () => {
           <div className="main-panel">
               {/* Sourdough Schedule Section */}
               <div className="panel-header">
-                <h3>사워도우 스케줄</h3>
+                <h3>포카치아 스케줄</h3>
               </div>
               <div style={{ padding: '1.5rem', borderBottom: '1px solid var(--border)' }}>
-                <p>여기에 사워도우 베이킹 스케줄 관리 기능이 들어갑니다.</p>
+                <p>여기에 포카치아 베이킹 스케줄 관리 기능이 들어갑니다.</p>
                 {/* Sourdough specific scheduling components will go here */}
               </div>
             </div>
@@ -40,4 +40,4 @@ const Scheduler = () => {
   );
 };
 
-export default Scheduler;
+export default BakingScheduler;
