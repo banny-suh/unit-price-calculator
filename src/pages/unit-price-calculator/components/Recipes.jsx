@@ -343,7 +343,6 @@ export default function Recipes({ ingredients }) {
             </li>
           )
         })}
-        {filteredRecipes.length === 0 && <li className="muted">저장된 레시피가 없습니다.</li>}
       </ul>
     </div>
   )
