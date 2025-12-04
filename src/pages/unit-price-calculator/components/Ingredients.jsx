@@ -56,20 +56,20 @@ export default function Ingredients({ onUpdate }) {
         if (!validateForm()) {
             return;
         }
-        
+
         const id = Date.now().toString();
         setItems(s => [{
-          id,
-          name: name.trim(),
-          gramsPurchased: Number(gramsPurchased),
-          price: Number(price)
+            id,
+            name: name.trim(),
+            gramsPurchased: Number(gramsPurchased),
+            price: Number(price)
         }, ...s]);
-        
+
         resetForm(); // Reset form fields and errors
         setIsModalOpen(false); // Close the modal after submission
     };
 
-    const filteredItems = items.filter(item => 
+    const filteredItems = items.filter(item =>
         item.name.toLowerCase().includes(searchTerm.toLowerCase())
     )
 
@@ -77,8 +77,8 @@ export default function Ingredients({ onUpdate }) {
         <div className="side-panel">
             <div className="panel-header">
                 <h3>재료 관리</h3>
-                <button 
-                    className="btn secondary" 
+                <button
+                    className="btn secondary"
                     onClick={() => setIsModalOpen(true)} // Open modal
                 >
                     재료 추가하기
@@ -86,7 +86,7 @@ export default function Ingredients({ onUpdate }) {
             </div>
 
             <div className="search-box">
-                <input 
+                <input
                     type="text"
                     placeholder="재료 검색..."
                     value={searchTerm}
@@ -99,9 +99,9 @@ export default function Ingredients({ onUpdate }) {
                 <form className="ingredients-form" onSubmit={handleSubmit}>
                     <div className="form-group">
                         <label>재료 이름</label>
-                        <input 
+                        <input
                             className={errors.name ? 'invalid' : ''}
-                            placeholder="예: 강력분, 버터" 
+                            placeholder="예: 강력분, 버터"
                             value={name}
                             onChange={e => setName(e.target.value)}
                         />
@@ -109,7 +109,7 @@ export default function Ingredients({ onUpdate }) {
 
                     <div className="form-group">
                         <label>구매 용량</label>
-                        <input 
+                        <input
                             className={errors.gramsPurchased ? 'invalid' : ''}
                             type="number"
                             placeholder="단위: g"
@@ -121,7 +121,7 @@ export default function Ingredients({ onUpdate }) {
 
                     <div className="form-group">
                         <label>구매 가격</label>
-                        <input 
+                        <input
                             className={errors.price ? 'invalid' : ''}
                             type="number"
                             placeholder="단위: 원"
@@ -142,7 +142,19 @@ export default function Ingredients({ onUpdate }) {
                 {filteredItems.slice(0, visibleItems).map(item => (
                     <div key={item.id} className="ingredient-item">
                         <div className="content">
-                            <strong>{item.name}</strong>
+                            {item.link ? (
+                                <a
+                                    href={item.link}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="ingredient-link"
+                                    style={{ textDecoration: 'none', color: 'inherit' }}
+                                >
+                                    <strong>{item.name}</strong>
+                                </a>
+                            ) : (
+                                <strong>{item.name}</strong>
+                            )}
                             <span className="muted">
                                 {item.gramsPurchased}g · {item.price}원 · {((item.price / item.gramsPurchased) || 0).toFixed(2)}원/g
                             </span>
